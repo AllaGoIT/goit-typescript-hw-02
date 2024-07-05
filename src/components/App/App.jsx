@@ -6,28 +6,29 @@ import ErrorMessage from "../ErrorMasagge/ErrorMassage";
 import Loader from "../Loader/Loader";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "../SearchBar/SearchBar";
-import ImageCard from "../ImageCard/ImageCard";
+
 
 
 const App = () => { 
-    const [articles, setArticles] = useState([]);
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         async function fetchArticles() {
-            const responce = await axios.get("https://api.unsplash.com/v1/search?query=nature");
-            setArticles(responce.data.hits);
+            const responce = await axios.get ("https://api.unsplash.com/photos/?client_id=GeFITrV8DFeWscaKxGsNnTSljHaWCimvtyFeqkLzvgI")
+            // const responce = await axios.get("https://api.unsplash.com/v1/search?query=nature");
+            console.log(responce);
+            setImages(responce.data.hits);
         }
         fetchArticles();
     }, []);
     return (
         <div>
-            <ImageGallery articles={articles} />
+            {images.length>0 &&<ImageGallery photos={images} />}
             <ImageModal />
             <ErrorMessage />
             <Loader />
             <LoadMoreBtn />
             <SearchBar />
-            <ImageCard/>
             
         </div>
     )
