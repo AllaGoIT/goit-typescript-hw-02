@@ -4,9 +4,9 @@ import ImageGallery from "../ImageGallery/ImageGallery";
 import ImageModal from "../ImageModal/ImageModal";
 import ErrorMessage from "../ErrorMasagge/ErrorMassage";
 import Loader from "../Loader/Loader";
-import LoadMoreBtn from "../LoadMoreBtn";
+import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "../SearchBar/SearchBar";
-import ImageCard from "../ImageCard";
+import ImageCard from "../ImageCard/ImageCard";
 
 
 const App = () => { 
