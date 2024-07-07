@@ -1,6 +1,7 @@
 import axios from 'axios';
-export async function fetchPhotosNature() {
-    const response = await axios.get("https://api.unsplash.com/photos/?client_id=GeFITrV8DFeWscaKxGsNnTSljHaWCimvtyFeqkLzvgI");
+export  const fetchPhotosNature = async ()=>{
+    axios.defaults.baseURL = "https://api.unsplash.com/photos/?client_id=GeFITrV8DFeWscaKxGsNnTSljHaWCimvtyFeqkLzvgI";
+    const response = await axios.get(`/search?collections/:page/photos`);
 return response.data.hits;
 }
 
