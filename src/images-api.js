@@ -4,9 +4,8 @@ import axios from 'axios';
     export const PER_PAGE = 12;
     export const fetchPhotosNature = async (query = "nature", imagePage = 1) => {
 
-    const searchParams = new URLSearchParams ({
+        const searchParams = new URLSearchParams({
         q: query,
-        image_type: "photo",
         orientation: "landscape",
         // page: "Optional; default: 1",  
         per_page: PER_PAGE,
