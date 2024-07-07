@@ -1,4 +1,4 @@
-const SearchBar = ({onClick}) => { 
+const SearchBar = ({onSubmit}) => { 
     return (
         
 <header>
@@ -9,7 +9,7 @@ const SearchBar = ({onClick}) => {
             // autofocus
             placeholder="Search images and photos"
     />
-    <button type="submit" onClick ={()=>{onClick()}}>Search</button>
+    <button type="submit" onClick ={()=>{onSubmit()}}>Search</button>
   </form>
 </header>
   

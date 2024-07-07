@@ -9,25 +9,32 @@ import SearchBar from "../SearchBar/SearchBar";
 
 
 
-const App = () => { 
+const App = () => {
     const [images, setImages] = useState([]);
     // const [loading, setLoading] = useState([false]);
     // const [error, setError] = useState([false]);
 
     useEffect(() => {
+      
         async function fetchPhotos() {
             try {
                 // setLoading(true);
-                const data = await fetchPhotosNature(images);
+                const data = await fetchPhotosNature()
+        
                 setImages(data);
-            } catch(error) {
+            }
+
+            catch (error) {
                 // setError(true);
-            } finally {
+            }
+            finally {
                 // setLoading(false);
-             }
+            }
         }
         fetchPhotos();
-    }, [images]);
+    }, [])
+
+
 
     const addImage = (newImage) => {
         setImages((prevImages) => {
@@ -36,7 +43,7 @@ const App = () => {
      };
     return (
         <div>
-       {images > 0 &&<ImageGallery photos={images} onAdd={addImage}/>} 
+       {images > 0 &&<ImageGallery photos={images} onSubmit={addImage}/>} 
             <ImageModal />
             <ErrorMessage />
             <Loader />

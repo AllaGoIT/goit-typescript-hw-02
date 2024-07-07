@@ -1,9 +1,19 @@
 import axios from 'axios';
-export  const fetchPhotosNature = async ()=>{
-    axios.defaults.baseURL = "https://api.unsplash.com/photos/?client_id=GeFITrV8DFeWscaKxGsNnTSljHaWCimvtyFeqkLzvgI";
-    const response = await axios.get(`/search?collections/:page/photos`);
-return response.data.hits;
-}
+    const BASE_URL = "https://api.unsplash.com/search/photos?page&query/?client_id=GeFITrV8DFeWscaKxGsNnTSljHaWCimvtyFeqkLzvgI";
+    axios.defaults.baseURL = BASE_URL;
+    export const PER_PAGE = 12;
+    export const fetchPhotosNature = async (query = "nature", imagePage = 1) => {
 
-// axios.baseUrl = "https://api.unsplash.com/photos/?client_id=GeFITrV8DFeWscaKxGsNnTSljHaWCimvtyFeqkLzvgI";
-     // const response = await axios.get(`/search?query=${nature}`);
+    const searchParams = new URLSearchParams ({
+        q: query,
+        image_type: "photo",
+        orientation: "landscape",
+        // page: "Optional; default: 1",  
+        per_page: PER_PAGE,
+        page: imagePage
+
+    })
+   
+    const response = await axios.get(`${BASE_URL}?${searchParams}`);
+    return response.data.hits;
+}
