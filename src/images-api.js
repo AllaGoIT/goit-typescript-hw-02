@@ -1,5 +1,5 @@
 import axios from 'axios';
-    const BASE_URL = "https://api.unsplash.com/search/photos?page&query/?client_id=GeFITrV8DFeWscaKxGsNnTSljHaWCimvtyFeqkLzvgI";
+    const BASE_URL = "https://api.unsplash.com/search/photos?page=1&query=nature/?client_id=GeFITrV8DFeWscaKxGsNnTSljHaWCimvtyFeqkLzvgI";
     axios.defaults.baseURL = BASE_URL;
     export const PER_PAGE = 12;
     export const fetchPhotosNature = async (query = "nature", imagePage = 1) => {
