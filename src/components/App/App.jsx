@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { fetchPhotosNature } from "../../images-api";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import ImageModal from "../ImageModal/ImageModal";
 import ErrorMessage from "../ErrorMasagge/ErrorMassage";
@@ -11,19 +11,26 @@ import SearchBar from "../SearchBar/SearchBar";
 
 const App = () => { 
     const [images, setImages] = useState([]);
+    // const [loading, setLoading] = useState([false]);
+    // const [error, setError] = useState([false]);
 
     useEffect(() => {
-        async function fetchArticles() {
-            const responce = await axios.get ("https://api.unsplash.com/photos/?client_id=GeFITrV8DFeWscaKxGsNnTSljHaWCimvtyFeqkLzvgI")
-            // const responce = await axios.get("https://api.unsplash.com/v1/search?query=nature");
-            console.log(responce);
-            setImages(responce.data.hits);
+        async function fetchPhotos() {
+            try {
+                // setLoading(true);
+                const data = await fetchPhotosNature("nature");
+                setImages(data);
+            } catch(error) {
+                // setError(true);
+            } finally {
+                // setLoading(false);
+             }
         }
-        fetchArticles();
+        fetchPhotos();
     }, []);
     return (
         <div>
-            {images.length>0 &&<ImageGallery photos={images} />}
+        <ImageGallery photos={images} />
             <ImageModal />
             <ErrorMessage />
             <Loader />
