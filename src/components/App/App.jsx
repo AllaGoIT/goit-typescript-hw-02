@@ -18,7 +18,7 @@ const App = () => {
         async function fetchPhotos() {
             try {
                 // setLoading(true);
-                const data = await fetchPhotosNature("nature");
+                const data = await fetchPhotosNature(images);
                 setImages(data);
             } catch(error) {
                 // setError(true);
@@ -27,15 +27,21 @@ const App = () => {
              }
         }
         fetchPhotos();
-    }, []);
+    }, [images]);
+
+    const addImage = (newImage) => {
+        setImages((prevImages) => {
+        return[...prevImages, JSON.parse (newImage)]
+    })
+     };
     return (
         <div>
-        <ImageGallery photos={images} />
+       {images > 0 &&<ImageGallery photos={images} onAdd={addImage}/>} 
             <ImageModal />
             <ErrorMessage />
             <Loader />
             <LoadMoreBtn />
-            <SearchBar />
+            <SearchBar onClick={addImage} />
             
         </div>
     )

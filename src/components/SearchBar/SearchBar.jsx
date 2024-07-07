@@ -1,13 +1,15 @@
-const SearchBar = () => { 
+const SearchBar = ({onClick}) => { 
     return (
         
 <header>
   <form>
     <input
-    //   type="text" autocomplete = "off" autofocus
-      placeholder="Search images and photos"
+            type="text"
+            // autocomplete="off"
+            // autofocus
+            placeholder="Search images and photos"
     />
-    <button type="submit">Search</button>
+    <button type="submit" onClick ={()=>{onClick()}}>Search</button>
   </form>
 </header>
   
