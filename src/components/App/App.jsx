@@ -31,7 +31,7 @@ const App = () => {
                 const { results, totalPages } = await fetchPhotosNature(query, page);
                 setImages(prevImages => [...prevImages, ...results]);
                 setVisible(page < totalPages);
-               
+                
                
             }
 
@@ -62,10 +62,12 @@ return (
             <ImageModal />
            {error && <ErrorMessage onClick={notify} />}
             {/* <Loader loading={loading} /> */}
-            <LoadMoreBtn visible={ visible} />
+           
             <SearchBar onSubmit={addImage} />
             {images.length > 0 && <ImageGallery photos={images} />} 
-            {loading &&<Audio
+           
+        <Toaster />
+         {loading &&<Audio
         
                 height="80"
                 width="80"
@@ -76,7 +78,7 @@ return (
                 wrapperClass
         />
         }
-             <Toaster />
+         <LoadMoreBtn visible={ visible} />
         </div>
     )
 }
