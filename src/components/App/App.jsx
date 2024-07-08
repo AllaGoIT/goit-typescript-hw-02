@@ -55,7 +55,7 @@ const App = () => {
     
 return (
         <div>
-       {images.length > 0 &&<ImageGallery photos={images}/>} 
+        {images.length > 0 && <ImageGallery photos={images} />} 
             <ImageModal />
             <ErrorMessage error={ error} />
             <Loader loading={loading} />

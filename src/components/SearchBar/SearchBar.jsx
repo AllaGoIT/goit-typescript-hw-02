@@ -18,7 +18,7 @@ const SearchBar = ({ onSubmit }) => {
             name="searchValue"
             placeholder="Search images and photos"
     />
-    <button type="submit" onClick ={onSubmit}>Search</button>
+    <button type="submit">Search</button>
   </form>
 </header>
   
