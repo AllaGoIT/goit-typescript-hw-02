@@ -1,8 +1,8 @@
-const ImageCard = ({data:{urls,alt_description} }) => { 
+const ImageCard = ({ data: { urls, slug } }) => { 
     return (
 
         <div>
-    <img src={urls.small} alt={alt_description} />
+    <img src={urls.small} alt={slug} />
         </div>
 
     )

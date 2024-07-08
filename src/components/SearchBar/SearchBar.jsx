@@ -4,7 +4,7 @@ const SearchBar = ({ onSubmit }) => {
     event.preventDefault();
     const form = event.target;
     const { searchValue} = form.elements;
-    console.log(searchValue.value);
+    onSubmit(searchValue.value);
     form.reset();
   
   };
