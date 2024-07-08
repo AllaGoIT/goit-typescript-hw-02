@@ -1,6 +1,6 @@
 import ImageCard from "../ImageCard/ImageCard";
 
-const ImageGallery = (photos) => { 
+const ImageGallery = ({ photos }) => { 
     return (
         <ul>
             {/* Набір елементів списку із зображеннями */}
