@@ -1,3 +1,5 @@
+import css from "./SearchBar.module.css";
+
 const SearchBar = ({ onSubmit }) => { 
   
   const handleSubmit = (event) => { 
@@ -9,16 +11,16 @@ const SearchBar = ({ onSubmit }) => {
   
   };
   return (  
-<header>
-  <form onSubmit = {handleSubmit} >
-    <input
+<header className={css.header}>
+  <form className={css.form} onSubmit = {handleSubmit} >
+    <input className={css.input}
             type="text"
           //   autocomplete="off"
           // autofocus
             name="searchValue"
             placeholder="Search images and photos"
     />
-    <button type="submit">Search</button>
+    <button className={css.btn} type="submit">Search</button>
   </form>
 </header>
   

@@ -55,12 +55,13 @@ const App = () => {
     
 return (
         <div>
-        {images.length > 0 && <ImageGallery photos={images} />} 
+        
             <ImageModal />
             <ErrorMessage error={ error} />
             <Loader loading={loading} />
             <LoadMoreBtn visible={ visible} />
-            <SearchBar onSubmit={addImage} />
+        <SearchBar onSubmit={addImage} />
+        {images.length > 0 && <ImageGallery photos={images} />} 
             
         </div>
     )
