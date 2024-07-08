@@ -3,11 +3,13 @@ import { fetchPhotosNature } from "../../images-api";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import ImageModal from "../ImageModal/ImageModal";
 import ErrorMessage from "../ErrorMasagge/ErrorMassage";
-import Loader from "../Loader/Loader";
+// import Loader from "../Loader/Loader";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "../SearchBar/SearchBar";
+import { Audio } from 'react-loader-spinner';
+import toast, { Toaster } from 'react-hot-toast';
 
-
+const notify = () => toast('Here is your toast.');
 
 const App = () => {
     const [images, setImages] = useState([]);
@@ -26,16 +28,17 @@ const App = () => {
             try {
                 setLoading(true);
                 setError(null);
-                console.log(query);
-                console.log(page);
                 const { results, totalPages } = await fetchPhotosNature(query, page);
                 setImages(prevImages => [...prevImages, ...results]);
                 setVisible(page < totalPages);
+               
+               
             }
 
 
             catch (error) {
                 setError(true);
+                
             }
             finally {
                 setLoading(false);
@@ -57,12 +60,23 @@ return (
         <div>
         
             <ImageModal />
-            <ErrorMessage error={ error} />
-            <Loader loading={loading} />
+           {error && <ErrorMessage onClick={notify} />}
+            {/* <Loader loading={loading} /> */}
             <LoadMoreBtn visible={ visible} />
-        <SearchBar onSubmit={addImage} />
-        {images.length > 0 && <ImageGallery photos={images} />} 
-            
+            <SearchBar onSubmit={addImage} />
+            {images.length > 0 && <ImageGallery photos={images} />} 
+            {loading &&<Audio
+        
+                height="80"
+                width="80"
+                radius="9"
+                color="green"
+                ariaLabel="three-dots-loading"
+                wrapperStyle
+                wrapperClass
+        />
+        }
+             <Toaster />
         </div>
     )
 }

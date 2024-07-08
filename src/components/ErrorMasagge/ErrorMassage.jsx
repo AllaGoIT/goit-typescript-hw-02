@@ -1,6 +1,7 @@
-const ErrorMasagge = () => { 
+const ErrorMasagge = ({onClick}) => { 
     return (
         <>
+            {onClick}
         </>
     )
 };
