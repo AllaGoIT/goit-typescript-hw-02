@@ -3,7 +3,7 @@ const ErrorMasagge = ({ toast }) => {
      
     return (
         <>
-            {toast('Please write request')}
+            {toast.error('ERROR!')}
         </>
     )
 };

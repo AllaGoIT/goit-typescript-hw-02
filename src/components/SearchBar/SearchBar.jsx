@@ -1,15 +1,18 @@
 import css from "./SearchBar.module.css";
-import ErrorMasagge from "../ErrorMasagge/ErrorMassage";
 
 
-const SearchBar = ({ onSubmit }) => { 
+
+const SearchBar = ({ onSubmit, toast }) => { 
   
   const handleSubmit = (event) => { 
     event.preventDefault();
     const form = event.target;
-    const { searchValue} = form.elements;
+    const { searchValue } = form.elements;
+      if (!searchValue.value.trim()) {
+    return toast.error("Can not be empty");
+  }
     onSubmit(searchValue.value);
-    {searchValue.value === " " && ErrorMasagge }
+    // {searchValue === "" && ErrorMasagge }
     form.reset();
   
   };
