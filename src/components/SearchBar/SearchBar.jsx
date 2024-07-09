@@ -12,7 +12,6 @@ const SearchBar = ({ onSubmit, toast }) => {
     return toast.error("Can not be empty");
   }
     onSubmit(searchValue.value);
-    // {searchValue === "" && ErrorMasagge }
     form.reset();
   
   };

@@ -7,7 +7,19 @@ import Loader from "../Loader/Loader";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "../SearchBar/SearchBar";
 import toast, { Toaster } from 'react-hot-toast';
+import React from 'react';
 
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+}
 
 
 
@@ -28,9 +40,9 @@ const App = () => {
             try {
                 setLoading(true);
                 setError(null);
-                const { results, totalPages } = await fetchPhotosNature(query, page);
+                const { results, total_Pages } = await fetchPhotosNature(query, page);
                 setImages(prevImages => [...prevImages, ...results]);
-                setVisible(page < totalPages);
+                setVisible(page < total_Pages);
             
             }
             catch (error) {
@@ -57,13 +69,30 @@ const App = () => {
        
         setPage(page + 1);
     }
+
+     let subtitle;
+  
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
     
     
 return (
         <div>
         
-            <ImageModal />
-        <SearchBar onSubmit={addImage} toast={toast} visible = {visible} />
+        <ImageModal modalIsOpen={modalIsOpen} isOpen= {openModal} afterOpen= {afterOpenModal} onClose={closeModal} styles={customStyles} />
+            <SearchBar onSubmit={addImage} toast={toast} visible = {visible} />
             {images.length > 0 && <ImageGallery photos={images} />} 
             {error && <ErrorMessage toast={toast } /> }
             {loading && <Loader/> }
