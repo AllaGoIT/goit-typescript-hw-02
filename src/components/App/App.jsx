@@ -18,10 +18,8 @@ const App = () => {
     const [query, setQuery] = useState('');
     const [page, setPage] = useState(1);
     const [visible, setVisible] = useState(false);
-    const [clicks, setClicks] = useState([]);
-
- 
-
+  
+   
     useEffect(() => {
         if (!query) return;
         async function fetchPhotos() {
@@ -32,6 +30,8 @@ const App = () => {
                 const { results, totalPages } = await fetchPhotosNature(query, page);
                 setImages(prevImages => [...prevImages, ...results]);
                 setVisible(page < totalPages);
+                
+
               
             }
             catch (error) {
@@ -53,17 +53,23 @@ const App = () => {
         setPage(1);
         setImages([]);
     }
+
+    const addImageLoadMore = () => {
+       
+        setPage(page + 1);
+    }
     
     
 return (
         <div>
         
             <ImageModal />
-            <SearchBar onSubmit={addImage} toast={toast} />
+        <SearchBar onSubmit={addImage} toast={toast}  />
             {images.length > 0 && <ImageGallery photos={images} />} 
             {error && <ErrorMessage toast={toast } /> }
             {loading && <Loader/> }
-            {visible&&<LoadMoreBtn onClick= {clicks}/>}
+            {images.length > 0 && !loading && (<LoadMoreBtn onClick={addImageLoadMore} />)}
+            {visible && <p>The End</p>}
             <Toaster />
         </div>
     )

@@ -5,6 +5,6 @@ import axios from 'axios';
     export const fetchPhotosNature = async (query,page) => {
 
    
-    const {data} = await axios.get(`sea1rch/photos?client_id=GeFITrV8DFeWscaKxGsNnTSljHaWCimvtyFeqkLzvgI&query=${query}&page=${page}&per_page=${PER_PAGE}&orientation=landscape`);
+    const {data} = await axios.get(`search/photos?client_id=GeFITrV8DFeWscaKxGsNnTSljHaWCimvtyFeqkLzvgI&query=${query}&page=${page}&per_page=${PER_PAGE}&orientation=landscape`);
     return data;
 }
