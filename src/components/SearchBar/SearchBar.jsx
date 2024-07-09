@@ -1,4 +1,5 @@
 import css from "./SearchBar.module.css";
+import ErrorMasagge from "../ErrorMasagge/ErrorMassage";
 
 
 const SearchBar = ({ onSubmit }) => { 
@@ -8,6 +9,7 @@ const SearchBar = ({ onSubmit }) => {
     const form = event.target;
     const { searchValue} = form.elements;
     onSubmit(searchValue.value);
+    {searchValue.value === " " && ErrorMasagge }
     form.reset();
   
   };

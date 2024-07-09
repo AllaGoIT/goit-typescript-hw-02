@@ -3,7 +3,7 @@ import { fetchPhotosNature } from "../../images-api";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import ImageModal from "../ImageModal/ImageModal";
 import ErrorMessage from "../ErrorMasagge/ErrorMassage";
-import Loader from "../Loader/Loader";
+// import Loader from "../Loader/Loader";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "../SearchBar/SearchBar";
 import { Audio } from 'react-loader-spinner';
@@ -58,13 +58,19 @@ const App = () => {
 return (
         <div>
         
-            <ImageModal />
-           
-        {loading && <Loader spiner={Audio} /> }
-            <ErrorMessage toast={toast} />
-            <SearchBar onSubmit={addImage}/>
+             <ImageModal />
+             <SearchBar onSubmit={addImage} />
+             <ErrorMessage toast={toast} />
             {images.length > 0 && <ImageGallery photos={images} />} 
             {error && toast.error("ERROR!")}
+            {loading && < Audio   
+            height="80"
+            width="80"
+            radius="9"
+            color="green"
+            ariaLabel="three-dots-loading"
+            wrapperStyle
+            wrapperClass /> }
             <LoadMoreBtn visible={visible} />
         <Toaster />
         </div>
