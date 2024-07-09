@@ -1,7 +1,9 @@
-const ErrorMasagge = ({onClick}) => { 
+
+const ErrorMasagge = ({ toast }) => { 
+     
     return (
         <>
-            {onClick}
+            {toast('Please write request')}
         </>
     )
 };

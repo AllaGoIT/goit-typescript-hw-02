@@ -3,13 +3,14 @@ import { fetchPhotosNature } from "../../images-api";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import ImageModal from "../ImageModal/ImageModal";
 import ErrorMessage from "../ErrorMasagge/ErrorMassage";
-// import Loader from "../Loader/Loader";
+import Loader from "../Loader/Loader";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "../SearchBar/SearchBar";
 import { Audio } from 'react-loader-spinner';
 import toast, { Toaster } from 'react-hot-toast';
 
-const notify = () => toast('Here is your toast.');
+
+
 
 const App = () => {
     const [images, setImages] = useState([]);
@@ -31,13 +32,11 @@ const App = () => {
                 const { results, totalPages } = await fetchPhotosNature(query, page);
                 setImages(prevImages => [...prevImages, ...results]);
                 setVisible(page < totalPages);
-                
-               
+              
             }
-
-
             catch (error) {
                 setError(true);
+                
                 
             }
             finally {
@@ -60,25 +59,14 @@ return (
         <div>
         
             <ImageModal />
-           {error && <ErrorMessage onClick={notify} />}
-            {/* <Loader loading={loading} /> */}
            
-            <SearchBar onSubmit={addImage} />
+        {loading && <Loader spiner={Audio} /> }
+            <ErrorMessage toast={toast} />
+            <SearchBar onSubmit={addImage}/>
             {images.length > 0 && <ImageGallery photos={images} />} 
-           
+            {error && toast.error("ERROR!")}
+            <LoadMoreBtn visible={visible} />
         <Toaster />
-         {loading &&<Audio
-        
-                height="80"
-                width="80"
-                radius="9"
-                color="green"
-                ariaLabel="three-dots-loading"
-                wrapperStyle
-                wrapperClass
-        />
-        }
-         <LoadMoreBtn visible={ visible} />
         </div>
     )
 }

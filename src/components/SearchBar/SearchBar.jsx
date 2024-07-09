@@ -1,5 +1,6 @@
 import css from "./SearchBar.module.css";
 
+
 const SearchBar = ({ onSubmit }) => { 
   
   const handleSubmit = (event) => { 
@@ -7,9 +8,6 @@ const SearchBar = ({ onSubmit }) => {
     const form = event.target;
     const { searchValue} = form.elements;
     onSubmit(searchValue.value);
-    if (form === null) 
-      console.log("Please");
-    
     form.reset();
   
   };
