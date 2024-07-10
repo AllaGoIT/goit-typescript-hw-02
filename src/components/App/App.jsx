@@ -98,7 +98,8 @@ return (
             {images.length > 0 && <ImageGallery photos={images} openModal={openModal} />} 
             {error && <ErrorMessage toast={toast } /> }
             {loading && <Loader/> }
-            {visible && !loading && images.length > 0 && <LoadMoreBtn onClick={addImageLoadMore}/>}
+            {!visible && !loading && images.length > 0 && <LoadMoreBtn onClick={addImageLoadMore} />}
+  
             <Toaster />
         </div>
     )
