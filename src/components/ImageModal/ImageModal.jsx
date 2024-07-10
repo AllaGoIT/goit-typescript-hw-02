@@ -1,21 +1,21 @@
 
-
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
-const ImageModal = ( {data:{ urls, slug },modalIsOpen,afterOpenModal,closeModal,customStyles}) => {
+const ImageModal = ({modalIsOpen, afterOpenModal, closeModal, customStyles,data}) => {
 
      
   return (
        
     <div>
-      
+      {/* <button onClick={openModal}>Open Modal</button> */}
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <img src={urls.regular} alt={slug} />
+        {/* <button onClick={closeModal}>close</button> */}
+        <img  src={data.urls} alt={data.slug} />
       </Modal>
     </div>
   );

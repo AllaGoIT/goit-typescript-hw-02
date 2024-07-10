@@ -29,7 +29,10 @@ const App = () => {
     const [error, setError] = useState(null);
     const [query, setQuery] = useState('');
     const [page, setPage] = useState(1);
-    const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+ 
+
 
 
    
@@ -72,15 +75,17 @@ const App = () => {
 
      let subtitle;
   
-    const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalData, setModalData] = useState(null);
 
-  function openModal() {
+  function openModal(image) {
     setIsOpen(true);
+    setModalData(image);
   }
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    subtitle.style.color = '#grey';
   }
 
   function closeModal() {
@@ -90,10 +95,9 @@ const App = () => {
     
 return (
         <div>
-        
-            <ImageModal modalIsOpen={modalIsOpen} openModal={openModal} afterOpenModal={afterOpenModal} closeModal={closeModal} customStyles={customStyles}/>
+            {modalIsOpen && <ImageModal data={modalData} modalIsOpen={modalIsOpen} openModal={openModal} afterOpenModal={afterOpenModal} closeModal={closeModal} customStyles={customStyles} />}
             <SearchBar onSubmit={addImage} toast={toast} visible = {visible} />
-            {images.length > 0 && <ImageGallery photos={images} />} 
+            {images.length > 0 && <ImageGallery photos={images} openModal={openModal} />} 
             {error && <ErrorMessage toast={toast } /> }
             {loading && <Loader/> }
             {visible && !loading && images.length > 0 && <LoadMoreBtn onClick={addImageLoadMore}/>}
