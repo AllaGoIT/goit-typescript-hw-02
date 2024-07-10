@@ -8,8 +8,8 @@ import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "../SearchBar/SearchBar";
 import toast, { Toaster } from 'react-hot-toast';
 import React from 'react';
-import Modal from 'react-modal';
-Modal.setAppElement('#ImageModal');
+
+
 const customStyles = {
   content: {
     top: '50%',
@@ -91,12 +91,11 @@ const App = () => {
 return (
         <div>
         
-            <ImageModal modalIsOpen={modalIsOpen} openModal={openModal} afterOpenModal={afterOpenModal} closeModal={closeModal} customStyles={customStyles} subtitle={subtitle } />
+            <ImageModal modalIsOpen={modalIsOpen} openModal={openModal} afterOpenModal={afterOpenModal} closeModal={closeModal} customStyles={customStyles}/>
             <SearchBar onSubmit={addImage} toast={toast} visible = {visible} />
             {images.length > 0 && <ImageGallery photos={images} />} 
             {error && <ErrorMessage toast={toast } /> }
             {loading && <Loader/> }
-            {/* {images.length > 0 && !loading && (<LoadMoreBtn onClick={addImageLoadMore} />)} */}
             {visible && !loading && images.length > 0 && <LoadMoreBtn onClick={addImageLoadMore}/>}
             <Toaster />
         </div>

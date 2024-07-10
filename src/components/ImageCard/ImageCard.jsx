@@ -1,6 +1,6 @@
 import css from "./ImageCard.module.css";
 
-const ImageCard = ({ data: { urls, slug } }) => { 
+const ImageCard = ({ data: { urls, slug }, }) => { 
     return (
 
         <div>
