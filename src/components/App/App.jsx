@@ -8,8 +8,8 @@ import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "../SearchBar/SearchBar";
 import toast, { Toaster } from 'react-hot-toast';
 import React from 'react';
-
-
+import Modal from 'react-modal';
+Modal.setAppElement('#ImageModal');
 const customStyles = {
   content: {
     top: '50%',
