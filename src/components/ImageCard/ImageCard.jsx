@@ -5,7 +5,7 @@ const ImageCard = ({ data: { urls, slug },openModal }) => {
     return (
 
         <div>
-            <img className={css.img} onClick={openModal}  src={urls.small} alt={slug} />
+            <img className={css.img} onClick={() => { openModal({ urls, slug })}}  src={urls.small} alt={slug} />
         
         </div>
 

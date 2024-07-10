@@ -29,13 +29,12 @@ const App = () => {
     const [error, setError] = useState(null);
     const [query, setQuery] = useState('');
     const [page, setPage] = useState(1);
-  const [visible, setVisible] = useState(false);
-
+    const [visible, setVisible] = useState(false);
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [modalData, setModalData] = useState(null);
  
+    let subtitle;
 
-
-
-   
     useEffect(() => {
         if (!query) return;
         async function fetchPhotos() {
@@ -73,10 +72,9 @@ const App = () => {
         setPage(page + 1);
     }
 
-     let subtitle;
   
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [modalData, setModalData] = useState(null);
+  
+
 
   function openModal(image) {
     setIsOpen(true);
@@ -85,7 +83,7 @@ const App = () => {
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#grey';
+    subtitle.style.color = '#f00';
   }
 
   function closeModal() {
