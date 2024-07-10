@@ -31,7 +31,7 @@ const App = () => {
     const [page, setPage] = useState(1);
     const [visible, setVisible] = useState(false);
 
-  
+
    
     useEffect(() => {
         if (!query) return;
@@ -91,7 +91,7 @@ const App = () => {
 return (
         <div>
         
-        <ImageModal modalIsOpen={modalIsOpen} isOpen= {openModal} afterOpen= {afterOpenModal} onClose={closeModal} styles={customStyles} />
+            <ImageModal modalIsOpen={modalIsOpen} openModal={openModal} afterOpenModal={afterOpenModal} closeModal={closeModal} customStyles={customStyles} subtitle={subtitle } />
             <SearchBar onSubmit={addImage} toast={toast} visible = {visible} />
             {images.length > 0 && <ImageGallery photos={images} />} 
             {error && <ErrorMessage toast={toast } /> }
