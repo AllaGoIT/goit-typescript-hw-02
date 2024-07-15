@@ -1,16 +1,21 @@
+import Modal from "react-modal";
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+Modal.setAppElement("#root");
 
-import Modal from 'react-modal';
-Modal.setAppElement('#root');
-const ImageModal = ({modalIsOpen, afterOpenModal, closeModal, customStyles,data}) => {
-
-     
+const ImageModal = ({ modalIsOpen, closeModal, data }) => {
   return (
-       
     <div>
-    
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
       >
@@ -18,7 +23,6 @@ const ImageModal = ({modalIsOpen, afterOpenModal, closeModal, customStyles,data}
       </Modal>
     </div>
   );
-}
-   
+};
 
 export default ImageModal;
