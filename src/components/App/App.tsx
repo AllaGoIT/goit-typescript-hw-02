@@ -9,6 +9,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import toast, { Toaster } from "react-hot-toast";
 import React from "react";
 import { Photo } from "../../types";
+import { boolean, string } from "yup";
 
 const App = () => {
   const [images, setImages] = useState<Photo[]>([]);
@@ -18,7 +19,7 @@ const App = () => {
   const [page, setPage] = useState<number>(1);
   const [visible, setVisible] = useState<boolean>(false);
   const [modalIsOpen, setIsOpen] = React.useState<boolean>(false);
-  const [modalData, setModalData] = useState<Photo | null>(null);
+  const [modalData, setModalData] = useState<null>(null);
 
   useEffect(() => {
     if (!query) return;
@@ -44,7 +45,7 @@ const App = () => {
     setImages([]);
   };
 
-  const addImageLoadMore = (page: number): void => {
+  const addImageLoadMore = () => {
     setPage(page + 1);
   };
 
@@ -53,7 +54,7 @@ const App = () => {
     setModalData(image);
   }
 
-  function closeModal() {
+  function closeModal(): void {
     setIsOpen(false);
   }
 
