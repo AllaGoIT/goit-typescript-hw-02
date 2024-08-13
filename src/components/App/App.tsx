@@ -8,18 +8,17 @@ import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "../SearchBar/SearchBar";
 import toast, { Toaster } from "react-hot-toast";
 import React from "react";
+import { Photo } from "../../types";
 
 const App = () => {
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [visible, setVisible] = useState(false);
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [modalData, setModalData] = useState(null);
-
-  // let subtitle;
+  const [images, setImages] = useState<Photo[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean | null>(null);
+  const [query, setQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [visible, setVisible] = useState<boolean>(false);
+  const [modalIsOpen, setIsOpen] = React.useState<boolean>(false);
+  const [modalData, setModalData] = useState<Photo | null>(null);
 
   useEffect(() => {
     if (!query) return;
@@ -39,25 +38,20 @@ const App = () => {
     fetchPhotos();
   }, [query, page]);
 
-  const addImage = (value) => {
+  const addImage = (value: string): void => {
     setQuery(value);
     setPage(1);
     setImages([]);
   };
 
-  const addImageLoadMore = () => {
+  const addImageLoadMore = (page: number): void => {
     setPage(page + 1);
   };
 
-  function openModal(image) {
+  function openModal(image: Photo): void {
     setIsOpen(true);
     setModalData(image);
   }
-
-  // function afterOpenModal() {
-  //   // references are now sync'd and can be accessed.
-  //   subtitle.style.color = "#f00";
-  // }
 
   function closeModal() {
     setIsOpen(false);
@@ -70,9 +64,7 @@ const App = () => {
           data={modalData}
           modalIsOpen={modalIsOpen}
           openModal={openModal}
-          // afterOpenModal={afterOpenModal}
           closeModal={closeModal}
-          // customStyles={customStyles}
         />
       )}
       <SearchBar onSubmit={addImage} toast={toast} visible={visible} />
