@@ -18,7 +18,7 @@ const App = () => {
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [visible, setVisible] = useState<number | boolean>(false);
-  const [modalIsOpen, setIsOpen] = React.useState<any | Photo[]>([]);
+  const [modalIsOpen, setIsOpen] = React.useState<Photo | boolean>(false);
   const [modalData, setModalData] = useState<Photo[] | any>([]);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const App = () => {
   };
 
   function openModal(image: Photo[]): void {
-    setIsOpen([]);
+    setIsOpen(true);
     setModalData(image);
   }
 
