@@ -5,9 +5,6 @@ import toast from "react-hot-toast";
 
 interface SearchBarProps {
   onSubmit: (value: string) => void;
-  // toast: {
-  //   error: (error: string) => {};
-  // };
 }
 interface Form extends HTMLFormElement {
   searchValue: HTMLFormElement;

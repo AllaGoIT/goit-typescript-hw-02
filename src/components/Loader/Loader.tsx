@@ -6,11 +6,9 @@ const Loader = () => {
       <Audio
         height="50"
         width="50"
-        radius="9"
+        // radius="9"
         color="red"
         ariaLabel="three-dots-loading"
-        wrapperStyle
-        wrapperClass
       />
     </div>
   );
