@@ -17,9 +17,9 @@ const App = () => {
   const [error, setError] = useState<boolean | null>(null);
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
-  const [visible, setVisible] = useState<boolean>(false);
-  const [modalIsOpen, setIsOpen] = React.useState<boolean>(false);
-  const [modalData, setModalData] = useState<null>(null);
+  const [visible, setVisible] = useState<number | boolean>(false);
+  const [modalIsOpen, setIsOpen] = React.useState<any | Photo[]>([]);
+  const [modalData, setModalData] = useState<Photo[] | any>([]);
 
   useEffect(() => {
     if (!query) return;
@@ -49,8 +49,8 @@ const App = () => {
     setPage(page + 1);
   };
 
-  function openModal(image: Photo): void {
-    setIsOpen(true);
+  function openModal(image: Photo[]): void {
+    setIsOpen([]);
     setModalData(image);
   }
 

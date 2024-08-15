@@ -2,7 +2,8 @@ import css from "./ImageCard.module.css";
 import { Photo } from "../../types";
 interface ImageCardProps {
   data: Photo;
-  openModal: (image: Photo) => void;
+
+  openModal: (image: Photo[]) => void;
 }
 
 const ImageCard: React.FC<ImageCardProps> = ({

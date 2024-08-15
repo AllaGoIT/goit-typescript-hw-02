@@ -13,8 +13,8 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 interface ImageModalProps {
-  modalIsOpen: boolean;
-  closeModal: boolean;
+  modalIsOpen: any;
+  closeModal: any;
   data: Photo;
 }
 const ImageModal: React.FC<ImageModalProps> = ({
