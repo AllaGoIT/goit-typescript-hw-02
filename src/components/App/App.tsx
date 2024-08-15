@@ -49,7 +49,7 @@ const App = () => {
     setPage(page + 1);
   };
 
-  function openModal(image: Photo[]): void {
+  function openModal(image: Photo): void {
     setIsOpen(true);
     setModalData(image);
   }

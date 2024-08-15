@@ -4,7 +4,7 @@ import { Photo } from "../../types";
 
 interface ImageGalleryProps {
   photos: Photo[];
-  openModal: (image: Photo[]) => void;
+  openModal: (image: Photo) => void;
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ photos, openModal }) => {
