@@ -1,9 +1,5 @@
-interface ErrorMasaggeProps {
-  toast: {
-    error: (error: string) => {};
-  };
-}
-const ErrorMasagge: React.FC<ErrorMasaggeProps> = ({ toast }) => {
+import toast from "react-hot-toast";
+const ErrorMasagge = () => {
   return <>{toast.error("ERROR!")}</>;
 };
 

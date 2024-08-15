@@ -17,7 +17,7 @@ const App = () => {
   const [error, setError] = useState<boolean | null>(null);
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
-  const [visible, setVisible] = useState<number | boolean>(false);
+  const [visible, setVisible] = useState<boolean>(false);
   const [modalIsOpen, setIsOpen] = React.useState<Photo | boolean>(false);
   const [modalData, setModalData] = useState<Photo[] | any>([]);
 
@@ -64,15 +64,14 @@ const App = () => {
         <ImageModal
           data={modalData}
           modalIsOpen={modalIsOpen}
-          openModal={openModal}
           closeModal={closeModal}
         />
       )}
-      <SearchBar onSubmit={addImage} toast={toast} visible={visible} />
+      <SearchBar onSubmit={addImage} />
       {images.length > 0 && (
         <ImageGallery photos={images} openModal={openModal} />
       )}
-      {error && <ErrorMessage toast={toast} />}
+      {error && <ErrorMessage />}
       {loading && <Loader />}
       {visible && !loading && images.length > 0 && (
         <LoadMoreBtn onClick={addImageLoadMore} />
