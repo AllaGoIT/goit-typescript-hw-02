@@ -1,24 +1,30 @@
 import css from "./SearchBar.module.css";
 import { FormEvent } from "react";
-
+import { ChangeEvent } from "react";
 interface SearchBarProps {
   onSubmit: (value: string) => void;
   toast: {
     error: (error: string) => {};
   };
 }
+interface Form extends HTMLFormElement {
+  searchValue: HTMLFormElement;
+}
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSubmit, toast }) => {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.target;
+    const form = event.target as Form;
     const { searchValue } = form.elements;
+
     if (!searchValue.value.trim()) {
       return toast.error("Can not be empty");
     }
+
     onSubmit(searchValue.value);
     form.reset();
   };
+
   return (
     <header className={css.header}>
       <form className={css.form} onSubmit={handleSubmit}>

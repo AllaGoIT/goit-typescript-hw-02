@@ -11,6 +11,7 @@ const customStyles = {
   },
 };
 Modal.setAppElement("#root");
+
 interface ImageModalProps {
   modalIsOpen: boolean;
   closeModal: boolean;
