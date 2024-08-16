@@ -18,8 +18,8 @@ const App = () => {
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [visible, setVisible] = useState<boolean>(false);
-  const [modalIsOpen, setIsOpen] = React.useState<Photo | boolean>(false);
-  const [modalData, setModalData] = useState<Photo[] | any>([]);
+  const [modalIsOpen, setIsOpen] = React.useState<boolean>(false);
+  const [modalData, setModalData] = useState<Photo | null>(null);
 
   useEffect(() => {
     if (!query) return;
@@ -60,7 +60,7 @@ const App = () => {
 
   return (
     <div>
-      {modalIsOpen && (
+      {modalIsOpen && modalData && (
         <ImageModal
           data={modalData}
           modalIsOpen={modalIsOpen}
