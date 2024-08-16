@@ -14,7 +14,7 @@ Modal.setAppElement("#root");
 
 interface ImageModalProps {
   modalIsOpen: boolean;
-  closeModal: any;
+  closeModal: () => void;
   data: Photo;
 }
 const ImageModal: React.FC<ImageModalProps> = ({
