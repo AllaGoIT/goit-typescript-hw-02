@@ -13,7 +13,7 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 interface ImageModalProps {
-  modalIsOpen: Photo | null;
+  modalIsOpen: boolean;
   closeModal: any;
   data: Photo;
 }
